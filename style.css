@@ -1,0 +1,19 @@
+.container{
+    background-color: black;
+}
+
+.container div{
+    height: 20px;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.column{
+    flex: 1;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+}
