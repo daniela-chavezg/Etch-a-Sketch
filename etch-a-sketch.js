@@ -59,6 +59,24 @@ function randomRGB(){
     return `rgb(${red},${green},${blue})`;
 }
 
+function pickBrush(color){
+    let brush;
+    if(currentMode === 'color'){
+        brush = currentColor;
+    }else if (currentMode === 'eraser'){
+        brush = 'rgb(255,255,255)'
+    }else if(currentMode === 'rainbow'){
+        brush = randomRGB();
+    }else if(currentMode === 'shading'){
+        brush = addShading(color);
+    }else if(currentMode === 'highlight'){
+        brush = addHighlight(color);
+    }
+
+    return brush;
+
+}
+
 
 
 //creates grid
@@ -79,33 +97,14 @@ function createGrid(num){
     const cells = document.querySelectorAll('.column');
     cells.forEach((cell) => {
         cell.addEventListener('mousedown', function(event){
-            if(currentMode === 'color'){
-                cell.setAttribute('style', `background-color: ${currentColor};`);
-            }else if (currentMode === 'eraser'){
-                cell.setAttribute('style', `background-color: #ffffff;`);
-            }else if(currentMode === 'rainbow'){
-                cell.setAttribute('style', `background-color: ${randomRGB()};`);
-            }else if(currentMode === 'shading'){
-                cell.setAttribute('style', `background-color: ${addShading(cell.style.backgroundColor)};`);
-            }else if(currentMode === 'highlight'){
-                cell.setAttribute('style',`background-color: ${addHighlight(cell.style.backgroundColor)};`);
-            }
-            console.log(cell.style.backgroundColor);
-            
+            cell.setAttribute('style', `background-color: ${pickBrush(cell.style.backgroundColor)};`);
         });
 
         cell.addEventListener('mousemove', function(event){
             console.log(event.type);
             if (event.buttons === 1){
-                if(currentMode === 'color'){
-                    cell.setAttribute('style', `background-color: ${currentColor};`);
-                }else if (currentMode === 'eraser'){
-                    cell.setAttribute('style', `background-color: #ffffff;`);
-                }else if(currentMode === 'rainbow'){
-                    cell.setAttribute('style', `background-color: ${randomRGB()};`);
-                }
-            }
-            
+                cell.setAttribute('style', `background-color: ${pickBrush(cell.style.backgroundColor)};`);
+            }     
         });
 
     });
