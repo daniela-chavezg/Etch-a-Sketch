@@ -1,6 +1,6 @@
 const DEFAULT_COLOR = 'rgba(0,0,0)';
 const DEFAULT_MODE = 'color';
-const DEFAULT_SIZE = 65;
+const DEFAULT_SIZE = 10;
 
 let currSize = DEFAULT_SIZE;
 let currentColor = DEFAULT_COLOR;
@@ -19,6 +19,7 @@ const highlightButton = document.querySelector('.highlight');
 
 //event listener for color picker
 colorPicker.addEventListener('input', function(event){
+    currentMode = 'color';
     currentColor = event.target.value;
 });
 
@@ -45,10 +46,17 @@ highlightButton.addEventListener('click', function(){
 });
 
 clearButton.addEventListener('click', function(){
+    removeGrid();
     createGrid(currSize);
-    console.log('work');
 
 });
+
+function removeGrid(){
+    const grid = container.querySelectorAll(".row");
+    for(let i = 0; i < grid.length; i++){
+        container.removeChild(grid[i]);
+}
+}
 
 
 function randomRGB(){
@@ -88,6 +96,7 @@ function createGrid(num){
         for(let i = 0; i < num; i ++){
             const column = document.createElement('div');
             column.classList.add('column')
+            column.setAttribute('style', 'background-color: rgb(255, 255, 255);')
             row.appendChild(column);
         }
     }
@@ -113,10 +122,7 @@ function createGrid(num){
 }
 
 
-function toRGB(color){
 
-
-}
 
 function addShading(color){
     //RGB(NUM,NUM,NUM)
