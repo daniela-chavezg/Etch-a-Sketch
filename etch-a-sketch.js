@@ -1,6 +1,6 @@
 const DEFAULT_COLOR = 'rgba(0,0,0)';
 const DEFAULT_MODE = 'color';
-const DEFAULT_SIZE = 10;
+const DEFAULT_SIZE = 35;
 
 let currSize = DEFAULT_SIZE;
 let currentColor = DEFAULT_COLOR;
@@ -29,6 +29,7 @@ eraserButton.addEventListener('click', function(){
 
 colorButton.addEventListener('click', function(){
     currentMode = 'color';
+    colorButton.classList.add('active-button');
 });
 
 rainbowButton.addEventListener('click', function(){
