@@ -1,6 +1,6 @@
 const DEFAULT_COLOR = 'rgba(0,0,0)';
 const DEFAULT_MODE = 'color';
-const DEFAULT_SIZE = 35;
+const DEFAULT_SIZE = 15;
 
 let currSize = DEFAULT_SIZE;
 let currentColor = DEFAULT_COLOR;
@@ -14,35 +14,50 @@ const rainbowButton = document.querySelector('.rainbow');
 const shadingButton = document.querySelector('.shading');
 const clearButton = document.querySelector('.clear');
 const highlightButton = document.querySelector('.highlight');
+const slider = document.querySelector('#myRange');
+const sliderCount = document.querySelector('.range-count');
 
 
 
 //event listener for color picker
+
+slider.addEventListener('input', function(){
+    currSize = slider.value;
+    sliderCount.textContent = `${slider.value} x ${slider.value}`;
+    removeGrid();
+    createGrid(currSize);
+});
+
 colorPicker.addEventListener('input', function(event){
+    toggleButton(currentMode, colorButton);
     currentMode = 'color';
     currentColor = event.target.value;
 });
 
 eraserButton.addEventListener('click', function(){
+    toggleButton(currentMode, eraserButton);
     currentMode = 'eraser';
 });
 
 colorButton.addEventListener('click', function(){
+    toggleButton(currentMode, colorButton);
     currentMode = 'color';
-    colorButton.classList.add('active-button');
+    
 });
 
 rainbowButton.addEventListener('click', function(){
+    toggleButton(currentMode, rainbowButton);
     currentMode = 'rainbow';
-
 });
 
 shadingButton.addEventListener('click', function(){
+    toggleButton(currentMode, shadingButton);
     currentMode = 'shading';
 
 });
 
 highlightButton.addEventListener('click', function(){
+    toggleButton(currentMode, highlightButton);
     currentMode = 'highlight';
 });
 
@@ -51,6 +66,28 @@ clearButton.addEventListener('click', function(){
     createGrid(currSize);
 
 });
+
+function toggleButton(currBrush, clickedBrush){
+    if (currBrush !== clickedBrush.classList.item(0)){
+        if (currBrush == 'color'){
+            colorButton.classList.remove('active-button');
+        } 
+        else if(currBrush == 'eraser'){
+            eraserButton.classList.remove('active-button');
+        }
+        else if(currBrush == 'rainbow'){
+            rainbowButton.classList.remove('active-button');
+        }
+        else if(currBrush == 'shading'){
+            shadingButton.classList.remove('active-button');
+        }
+        else if(currBrush == 'highlight'){
+            highlightButton.classList.remove('active-button');
+        }
+        clickedBrush.classList.add('active-button');
+    }
+
+}
 
 function removeGrid(){
     const grid = container.querySelectorAll(".row");
@@ -62,9 +99,9 @@ function removeGrid(){
 
 function randomRGB(){
     //rgb(num,num,num)
-    let red = Math.floor(Math.random() * 256);
-    let green = Math.floor(Math.random() * 256);
-    let blue = Math.floor(Math.random() * 256);
+    let red = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
     return `rgb(${red},${green},${blue})`;
 }
 

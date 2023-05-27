@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+
+
 body{
     background-color: rgb(21, 10, 69);
 }
 
 h1{
-    font-size: 44px;
+    font-size: 60px;
     text-align: center;
-    color: rgb(234, 98, 98);
+    color: #eb5c8e;
+    font-family: 'Play', sans-serif;
+    
 
 
 }
@@ -13,46 +19,47 @@ h1{
 .sketch{
     display: flex;
     justify-content: space-evenly;
+   
 
 }
-
 
 
 
 .buttons{
+    display: flex;
+    flex-direction: column;
     text-align: center;
     background-color: rgba(63, 46, 117, 0.243);
     padding: 8px;
     border-radius: 8px;
+    justify-content: space-around;
+    align-items: center;
 }
 
+button, .range-count{
+    font-size: 20px;
+    color: #ed6ea0;
+    font-family: sans-serif;
+    text-align:center;
+}
 
 button{
     display: block;
     width: 160px;
     height: 50px;
-    margin: 15px;
-    font-size: 18px;
-    color: #b441ab;
     cursor: pointer;
-  
-    text-align:center;
-    font-weight: 600;
-    border: #b851af solid 1px;
+    font-weight: 700;
+    border: #ed6ea0 solid 1px;
     background: none;
-
     border-radius: 50px;
     transition: all .3s ease-in-out;
 
-   
-
-    
 }
 
 button:hover, .active-button{
-    color: #fff;
+    color: rgb(244, 241, 255);
     background-size: 300% 100%;
-    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+    background-image: linear-gradient(to right, #ee4186, #a869ec, #d83d75 , #3bf5fb);
     
 }
 
@@ -61,6 +68,8 @@ button:hover, .active-button{
     height: 600px;
     display: flex;
     flex-direction: column;
+    box-shadow: 20px 20px 0px 0px #d96191;
+    
 }
 
 
@@ -75,3 +84,32 @@ button:hover, .active-button{
     flex: 1;
     /*border: 0.01px solid rgb(141, 138, 138);*/
 }
+
+.slider {
+    -webkit-appearance: none;
+    width: 90%;
+    height: 8px;
+    background: #e6e3e3;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #de5ac8;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #de5ac8;
+    cursor: pointer;
+  }
+
