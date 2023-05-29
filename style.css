@@ -48,14 +48,12 @@ button{
     background: none;
     border-radius: 50px;
     transition: all .3s ease-in-out;
-
 }
 
 button:hover, .active-button{
     color: rgb(244, 241, 255);
     background-size: 300% 100%;
     background-image: linear-gradient(to right, #ee4186, #a869ec, #d83d75 , #3bf5fb);
-    
 }
 
 .container{
@@ -76,12 +74,10 @@ button:hover, .active-button{
 
 .column{
     flex: 1;
-    
 }
 
 .grid-border{
     border: 0.01px solid rgba(178, 176, 176, 0.56);
-    
 }
 
 .slider {

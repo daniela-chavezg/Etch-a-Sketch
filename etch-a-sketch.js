@@ -20,12 +20,13 @@ const toggleGridButton = document.querySelector('.grid-lines');
 
 
 
-//event listener for color picker
-
-slider.addEventListener('change', function(){
+slider.addEventListener('input', function(){
     currSize = slider.value;
     sliderCount.textContent = `${slider.value} x ${slider.value}`;
-    removeGrid();
+});
+
+slider.addEventListener('change', function(){
+    container.innerHTML = '';
     createGrid(currSize);
 });
 
@@ -63,8 +64,7 @@ highlightButton.addEventListener('click', function(){
 });
 
 clearButton.addEventListener('click', function(){
-    removeGrid();
-    createGrid(currSize);
+    clearGrid();
 
 });
 
@@ -98,11 +98,11 @@ function toggleButton(currBrush, clickedBrush){
 
 }
 
-function removeGrid(){
-    const grid = container.querySelectorAll(".row");
-    for(let i = 0; i < grid.length; i++){
-        container.removeChild(grid[i]);
-}
+function clearGrid(){
+    const cells = container.querySelectorAll(".column");
+    for(let i = 0; i < cells.length; i++){
+        cells[i].setAttribute('style', 'background-color: rgb(255, 255, 255);');
+    }
 }
 
 
@@ -142,8 +142,8 @@ function createGrid(num){
         container.appendChild(row);
         for(let i = 0; i < num; i ++){
             const column = document.createElement('div');
-            column.classList.add('column')
-            column.setAttribute('style', 'background-color: rgb(255, 255, 255);')
+            column.classList.add('column');
+            column.setAttribute('style', 'background-color: rgb(255, 255, 255);');
             row.appendChild(column);
         }
     }
@@ -153,10 +153,11 @@ function createGrid(num){
     const cells = document.querySelectorAll('.column');
     cells.forEach((cell) => {
         cell.addEventListener('mousedown', function(event){
+            event.preventDefault();
             cell.setAttribute('style', `background-color: ${pickBrush(cell.style.backgroundColor)};`);
         });
 
-        cell.addEventListener('mousemove', function(event){
+        cell.addEventListener('mouseover', function(event){
             console.log(event.type);
             if (event.buttons === 1){
                 cell.setAttribute('style', `background-color: ${pickBrush(cell.style.backgroundColor)};`);
