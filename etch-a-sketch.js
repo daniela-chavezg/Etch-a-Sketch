@@ -16,12 +16,13 @@ const clearButton = document.querySelector('.clear');
 const highlightButton = document.querySelector('.highlight');
 const slider = document.querySelector('#myRange');
 const sliderCount = document.querySelector('.range-count');
+const toggleGridButton = document.querySelector('.grid-lines');
 
 
 
 //event listener for color picker
 
-slider.addEventListener('input', function(){
+slider.addEventListener('change', function(){
     currSize = slider.value;
     sliderCount.textContent = `${slider.value} x ${slider.value}`;
     removeGrid();
@@ -67,6 +68,14 @@ clearButton.addEventListener('click', function(){
 
 });
 
+toggleGridButton.addEventListener('click', function(){
+    const columns = document.querySelectorAll('.column');
+    columns.forEach((col) => {
+        col.classList.toggle('grid-border');
+    });
+
+});
+
 function toggleButton(currBrush, clickedBrush){
     if (currBrush !== clickedBrush.classList.item(0)){
         if (currBrush == 'color'){
@@ -99,9 +108,9 @@ function removeGrid(){
 
 function randomRGB(){
     //rgb(num,num,num)
-    let red = Math.floor(Math.random() * 255);
-    let green = Math.floor(Math.random() * 255);
-    let blue = Math.floor(Math.random() * 255);
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
     return `rgb(${red},${green},${blue})`;
 }
 

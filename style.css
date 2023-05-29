@@ -11,16 +11,11 @@ h1{
     text-align: center;
     color: #eb5c8e;
     font-family: 'Play', sans-serif;
-    
-
-
 }
 
 .sketch{
     display: flex;
     justify-content: space-evenly;
-   
-
 }
 
 
@@ -30,7 +25,7 @@ h1{
     flex-direction: column;
     text-align: center;
     background-color: rgba(63, 46, 117, 0.243);
-    padding: 8px;
+    padding: 30px;
     border-radius: 8px;
     justify-content: space-around;
     align-items: center;
@@ -69,7 +64,6 @@ button:hover, .active-button{
     display: flex;
     flex-direction: column;
     box-shadow: 20px 20px 0px 0px #d96191;
-    
 }
 
 
@@ -82,7 +76,12 @@ button:hover, .active-button{
 
 .column{
     flex: 1;
-    /*border: 0.01px solid rgb(141, 138, 138);*/
+    
+}
+
+.grid-border{
+    border: 0.01px solid rgba(178, 176, 176, 0.56);
+    
 }
 
 .slider {
